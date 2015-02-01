@@ -1,5 +1,5 @@
 {
-    "name": "dmstr/yii2-application-info",
+    "name": "dmstr/yii2-application-metadata",
     "description": "Provides in-depth configuration and application information",
     "type": "yii2-extension",
     "keywords": ["yii2","extension"],
@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "dmstr\\modules\\backend\\": ""
+            "dmstr\\modules\\metadata\\": ""
         }
     }
 }
