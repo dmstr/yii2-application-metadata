@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "dmstr\\": ""
+            "dmstr\\helpers\\": ""
         }
     }
 }
