@@ -16,7 +16,7 @@ class Metadata
     {
         $modules = Yii::$app->getModules();
         if ($sorted) {
-           # ksort($modules);
+            # ksort($modules);
         }
         return $modules;
     }
@@ -42,6 +42,7 @@ class Metadata
             $c             = Yii::$app->createController($route);
             $controllers[] = [
                 'name'    => $controller,
+                'module'  => $module->id,
                 'route'   => $route . '/' . $controller,
                 'url'     => Yii::$app->urlManager->createUrl($route . '/' . $controller),
                 'actions' => self::getControllerActions($c[0]),
