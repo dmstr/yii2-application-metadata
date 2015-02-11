@@ -32,21 +32,23 @@ class Metadata
         }
 
         $controllers = [];
-        foreach (scandir($module->getControllerPath()) AS $i => $name) {
-            if (substr($name, 0, 1) == '.') {
-                continue;
+        if (is_dir($module->getControllerPath())) {
+            foreach (scandir($module->getControllerPath()) AS $i => $name) {
+                if (substr($name, 0, 1) == '.') {
+                    continue;
+                }
+                #echo $module->getControllerPath();
+                $controller    = \yii\helpers\Inflector::camel2id(str_replace('Controller.php', '', $name));
+                $route         = ($module->id == 'app') ? '' : '/' . $module->id;
+                $c             = Yii::$app->createController($route);
+                $controllers[] = [
+                    'name'    => $controller,
+                    'module'  => $module->id,
+                    'route'   => $route . '/' . $controller,
+                    'url'     => Yii::$app->urlManager->createUrl($route . '/' . $controller),
+                    'actions' => self::getControllerActions($c[0]),
+                ];
             }
-            #echo $module->getControllerPath();
-            $controller    = \yii\helpers\Inflector::camel2id(str_replace('Controller.php', '', $name));
-            $route         = ($module->id == 'app') ? '' : '/' . $module->id;
-            $c             = Yii::$app->createController($route);
-            $controllers[] = [
-                'name'    => $controller,
-                'module'  => $module->id,
-                'route'   => $route . '/' . $controller,
-                'url'     => Yii::$app->urlManager->createUrl($route . '/' . $controller),
-                'actions' => self::getControllerActions($c[0]),
-            ];
         }
         return $controllers;
     }
