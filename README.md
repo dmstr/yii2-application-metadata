@@ -1,5 +1,12 @@
 Extended application information for Yii 2.0 Framework
 ======================================================
+
+:warning: **Project state: `discontinued/obsolete`**
+
+It is recommended to remove this package from your `composer.json` dependencies, see [dmstr/yii2-helpers](https://github.com/dmstr/yii2-helpers) for a replacement.
+
+---
+
 Provides in-depth configuration and application information
 
 Installation
